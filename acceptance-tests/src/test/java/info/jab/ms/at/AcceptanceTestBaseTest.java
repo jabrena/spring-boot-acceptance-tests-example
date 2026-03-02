@@ -15,14 +15,17 @@ public abstract class AcceptanceTestBaseTest {
 
     private static final String APP_SERVICE = "app";
     private static final int APP_PORT = 8080;
+    private static final int DEBUG_PORT = 5005;
 
     @Container
     static final ComposeContainer ENVIRONMENT =
         new ComposeContainer(new File("docker-compose.yml"))
             .withExposedService(APP_SERVICE, APP_PORT,
                 Wait.forHttp("/actuator/health")
+                    .forPort(APP_PORT)
                     .forStatusCode(200)
                     .withStartupTimeout(Duration.ofSeconds(120)))
+            .withExposedService(APP_SERVICE, DEBUG_PORT)
             .withLocalCompose(true);
 
     @BeforeAll
