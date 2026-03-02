@@ -23,6 +23,9 @@
         "arvindand/maven-tools-mcp:latest"
       ]
     },
+    "javadocs": {
+      "url": "https://www.javadocs.dev/mcp"
+    },
     "github": {
       "command": "docker",
       "args": [
