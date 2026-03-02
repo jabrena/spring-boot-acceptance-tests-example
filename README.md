@@ -2,9 +2,9 @@
 
 ## How to run in local?
 
-```
+```bash
 ./mvnw verify -pl app
-./mvnw verify -pl acceptance-tests
+./mvnw verify -pl acceptance-tests -am
 ```
 
 ## MCP Servers
@@ -16,7 +16,26 @@
   "mcpServers": {
     "maven-tools": {
       "command": "docker",
-      "args": ["run", "-i", "--rm", "arvindand/maven-tools-mcp:latest"]
+      "args": [
+        "run",
+        "-i",
+        "--rm",
+        "arvindand/maven-tools-mcp:latest"
+      ]
+    },
+    "github": {
+      "command": "docker",
+      "args": [
+        "run",
+        "-i",
+        "--rm",
+        "-e",
+        "GITHUB_PERSONAL_ACCESS_TOKEN",
+        "ghcr.io/github/github-mcp-server:latest"
+      ],
+      "env": {
+        "GITHUB_PERSONAL_ACCESS_TOKEN": "YOUR_TOKEN_HERE"
+      }
     }
   }
 }
@@ -27,5 +46,5 @@
 ```bash
 npx skills add jabrena/cursor-rules-java --list
 npx skills add jabrena/cursor-rules-java --skill 173-java-agents
+npx skills add jabrena/cursor-rules-java --skill 110-java-maven-best-practices
 ```
-

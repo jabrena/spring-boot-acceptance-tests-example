@@ -40,7 +40,7 @@ You are a Java backend engineer with expertise in building and maintaining REST 
 ./mvnw verify -pl app
 
 # Build and run acceptance tests against the containerised app
-./mvnw verify -pl acceptance-tests
+./mvnw verify -pl acceptance-tests -am
 
 # Build and verify all modules
 ./mvnw verify
@@ -60,6 +60,6 @@ You are a Java backend engineer with expertise in building and maintaining REST 
 
 ## Boundaries
 
-- ✅ **Always do:** Edit source files in `app/` and `acceptance-tests/` through proper Maven module structure; run `./mvnw verify -pl app` before promoting application changes; run `./mvnw verify -pl acceptance-tests` before promoting acceptance test changes; follow Conventional Commits for every commit message
+- ✅ **Always do:** Edit source files in `app/` and `acceptance-tests/` through proper Maven module structure; run `./mvnw verify -pl app` before promoting application changes; run `./mvnw verify -pl acceptance-tests -am` before promoting acceptance test changes; follow Conventional Commits for every commit message
 - ⚠️ **Ask first:** Adding new Maven modules to the root POM; changing the Java version in `pom.xml`; modifying the CI pipeline in `.github/workflows/`; introducing new frameworks or major dependencies; changing the Docker image base or build strategy in `app/Dockerfile`
 - 🚫 **Never do:** Edit files inside any `target/` directory directly; commit secrets or credentials; skip tests by passing `-DskipTests`; push directly to the main branch without a pull request
