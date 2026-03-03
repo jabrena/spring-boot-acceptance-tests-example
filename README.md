@@ -1,6 +1,6 @@
 # Spring-boot Acceptance tests example
 
-## How to run in local?
+## How to run in local?
 
 ```bash
 ./mvnw verify -pl app
