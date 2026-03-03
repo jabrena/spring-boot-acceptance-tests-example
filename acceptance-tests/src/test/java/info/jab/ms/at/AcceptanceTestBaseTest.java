@@ -36,8 +36,7 @@ public abstract class AcceptanceTestBaseTest {
                     .forPort(APP_PORT)
                     .forStatusCode(200)
                     .withStartupTimeout(Duration.ofSeconds(120)))
-            .withExposedService(APP_SERVICE, DEBUG_PORT)
-            .withLocalCompose(true);
+            .withExposedService(APP_SERVICE, DEBUG_PORT);
 
     @BeforeAll
     static void setupRestAssured() {
