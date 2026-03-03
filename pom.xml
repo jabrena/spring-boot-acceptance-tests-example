@@ -27,6 +27,12 @@
 		<groovy.version>4.0.24</groovy.version>
 		<restassured.version>6.0.0</restassured.version>
 		<testcontainers.version>2.0.3</testcontainers.version>
+		<maven-plugin-compiler.version>3.14.0</maven-plugin-compiler.version>
+		<jspecify.version>1.0.0</jspecify.version>
+		<error-prone.version>2.48.0</error-prone.version>
+		<nullaway.version>0.13.1</nullaway.version>
+		<vavr.version>0.10.6</vavr.version>
+		<archunit.version>1.4.1</archunit.version>
 	</properties>
 
 	<dependencyManagement>
@@ -42,6 +48,21 @@
 				<groupId>io.rest-assured</groupId>
 				<artifactId>rest-assured</artifactId>
 				<version>${restassured.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.jspecify</groupId>
+				<artifactId>jspecify</artifactId>
+				<version>${jspecify.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>io.vavr</groupId>
+				<artifactId>vavr</artifactId>
+				<version>${vavr.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.tngtech.archunit</groupId>
+				<artifactId>archunit-junit5</artifactId>
+				<version>${archunit.version}</version>
 			</dependency>
 		</dependencies>
 	</dependencyManagement>

@@ -3,6 +3,7 @@
 ## How to run in local?
 
 ```bash
+./mvnw verify
 ./mvnw verify -pl app
 ./mvnw verify -pl acceptance-tests -am
 ```
