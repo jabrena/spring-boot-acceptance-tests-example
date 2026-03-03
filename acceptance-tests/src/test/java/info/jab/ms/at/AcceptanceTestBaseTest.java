@@ -10,6 +10,17 @@ import org.testcontainers.junit.jupiter.Testcontainers;
 import java.io.File;
 import java.time.Duration;
 
+/**
+ * Base for acceptance tests. The app runs in a Docker container (separate JVM).
+ * To hit breakpoints in app code (e.g. CalculatorService) during a test:
+ * <ol>
+ *   <li>Set a breakpoint on the first line of the test method (so the test pauses before calling the app).</li>
+ *   <li>Run the acceptance test in Debug (e.g. right‑click {@code shouldReturnSumOfTwoIntegers} → Debug).
+ *       The container starts; execution stops at your breakpoint.</li>
+ *   <li>While paused, run your "Remote JVM Debug" config (localhost:5005). It attaches to the app in the container.</li>
+ *   <li>Press Resume (F9). The test sends the request; the app handles it and stops at breakpoints in app code.</li>
+ * </ol>
+ */
 @Testcontainers
 public abstract class AcceptanceTestBaseTest {
 

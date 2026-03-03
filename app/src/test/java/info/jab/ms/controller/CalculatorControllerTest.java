@@ -1,5 +1,6 @@
 package info.jab.ms.controller;
 
+import info.jab.ms.service.CalculatorService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
@@ -17,7 +18,7 @@ class CalculatorControllerTest {
 
     @BeforeEach
     void setUp() {
-        mockMvc = MockMvcBuilders.standaloneSetup(new CalculatorController()).build();
+        mockMvc = MockMvcBuilders.standaloneSetup(new CalculatorController(new CalculatorService())).build();
     }
 
     @ParameterizedTest(name = "sum({0}, {1}) = {2}")
