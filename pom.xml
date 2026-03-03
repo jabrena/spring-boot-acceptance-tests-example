@@ -25,7 +25,7 @@
 	<properties>
 		<java.version>25</java.version>
 		<groovy.version>4.0.24</groovy.version>
-		<restassured.version>5.4.0</restassured.version>
+		<restassured.version>6.0.0</restassured.version>
 		<testcontainers.version>1.21.4</testcontainers.version>
 	</properties>
 
