@@ -24,15 +24,24 @@
 
 	<properties>
 		<java.version>25</java.version>
+		<maven.version>3.9.10</maven.version>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		
+		<!-- Dependency versions -->
 		<groovy.version>4.0.24</groovy.version>
 		<restassured.version>6.0.0</restassured.version>
 		<testcontainers.version>2.0.3</testcontainers.version>
-		<maven-plugin-compiler.version>3.14.0</maven-plugin-compiler.version>
 		<jspecify.version>1.0.0</jspecify.version>
 		<error-prone.version>2.48.0</error-prone.version>
 		<nullaway.version>0.13.1</nullaway.version>
 		<vavr.version>0.10.6</vavr.version>
 		<archunit.version>1.4.1</archunit.version>
+		
+		<!-- Plugin versions -->
+		<maven-plugin-compiler.version>3.14.0</maven-plugin-compiler.version>
+		<maven-plugin-enforcer.version>3.5.0</maven-plugin-enforcer.version>
+		<extra-enforcer-rules.version>1.8.0</extra-enforcer-rules.version>
 	</properties>
 
 	<dependencyManagement>
@@ -66,5 +75,49 @@
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-enforcer-plugin</artifactId>
+				<version>${maven-plugin-enforcer.version}</version>
+				<dependencies>
+					<dependency>
+						<groupId>org.codehaus.mojo</groupId>
+						<artifactId>extra-enforcer-rules</artifactId>
+						<version>${extra-enforcer-rules.version}</version>
+					</dependency>
+				</dependencies>
+				<executions>
+					<execution>
+						<id>enforce</id>
+						<configuration>
+							<rules>
+								<banCircularDependencies/>
+								<dependencyConvergence />
+								<banDuplicatePomDependencyVersions />
+								<requireMavenVersion>
+									<version>${maven.version}</version>
+								</requireMavenVersion>
+								<requireJavaVersion>
+									<version>${java.version}</version>
+								</requireJavaVersion>
+								<bannedDependencies>
+									<excludes>
+										<exclude>org.projectlombok:lombok</exclude>
+									</excludes>
+								</bannedDependencies>
+							</rules>
+							<fail>true</fail>
+						</configuration>
+						<goals>
+							<goal>enforce</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
 
 </project>

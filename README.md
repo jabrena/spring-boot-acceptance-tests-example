@@ -52,3 +52,7 @@ npx skills add jabrena/cursor-rules-java --list
 npx skills add jabrena/cursor-rules-java --skill 173-java-agents
 npx skills add jabrena/cursor-rules-java --skill 110-java-maven-best-practices
 ```
+
+## References
+
+- https://github.com/jabrena/latency-problems/blob/master/docs/problem1/README.md

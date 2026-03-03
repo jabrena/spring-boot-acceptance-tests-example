@@ -4,8 +4,6 @@ import io.restassured.RestAssured;
 import org.junit.jupiter.api.BeforeAll;
 import org.testcontainers.containers.ComposeContainer;
 import org.testcontainers.containers.wait.strategy.Wait;
-import org.testcontainers.junit.jupiter.Container;
-import org.testcontainers.junit.jupiter.Testcontainers;
 
 import java.io.File;
 import java.time.Duration;
@@ -21,14 +19,14 @@ import java.time.Duration;
  *   <li>Press Resume (F9). The test sends the request; the app handles it and stops at breakpoints in app code.</li>
  * </ol>
  */
-@Testcontainers
+// @Testcontainers - Removed to allow manual singleton lifecycle management
 public abstract class AcceptanceTestBaseTest {
 
     private static final String APP_SERVICE = "app";
     private static final int APP_PORT = 8080;
     private static final int DEBUG_PORT = 5005;
 
-    @Container
+    // @Container - Removed to prevent JUnit extension from managing lifecycle
     static final ComposeContainer ENVIRONMENT =
         new ComposeContainer(new File("docker-compose.yml"))
             .withExposedService(APP_SERVICE, APP_PORT,
@@ -37,6 +35,11 @@ public abstract class AcceptanceTestBaseTest {
                     .forStatusCode(200)
                     .withStartupTimeout(Duration.ofSeconds(120)))
             .withExposedService(APP_SERVICE, DEBUG_PORT);
+
+    static {
+        ENVIRONMENT.start();
+        Runtime.getRuntime().addShutdownHook(new Thread(ENVIRONMENT::stop));
+    }
 
     @BeforeAll
     static void setupRestAssured() {
