@@ -5,4 +5,7 @@
  * microservice for mathematical calculations and external API integrations.
  * Key classes: {@link info.jab.ms.MainApplication}
  */
+@NullMarked
 package info.jab.ms;
+
+import org.jspecify.annotations.NullMarked;

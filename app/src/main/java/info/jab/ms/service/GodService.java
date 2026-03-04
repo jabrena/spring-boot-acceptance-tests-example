@@ -1,6 +1,7 @@
 package info.jab.ms.service;
 
 import info.jab.ms.client.GodApiClient;
+import org.jspecify.annotations.NonNull;
 import org.springframework.stereotype.Service;
 
 import java.math.BigInteger;
@@ -14,13 +15,13 @@ import java.util.stream.Stream;
 @Service
 public class GodService {
 
-    private final GodApiClient godApiClient;
+    private final @NonNull GodApiClient godApiClient;
 
-    public GodService(GodApiClient godApiClient) {
+    public GodService(@NonNull GodApiClient godApiClient) {
         this.godApiClient = godApiClient;
     }
 
-    public BigInteger computeSum() {
+    public @NonNull BigInteger computeSum() {
         try (var executor = Executors.newVirtualThreadPerTaskExecutor()) {
             var greekFuture = CompletableFuture
                 .supplyAsync(godApiClient::getGreekGods, executor)
@@ -44,7 +45,7 @@ public class GodService {
         }
     }
 
-    private BigInteger toDecimal(String name) {
+    private @NonNull BigInteger toDecimal(@NonNull String name) {
         var sb = new StringBuilder();
         for (int i = 0; i < name.length(); i++) {
             sb.append((int) name.charAt(i));
