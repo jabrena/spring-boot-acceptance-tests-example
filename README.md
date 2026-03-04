@@ -3,9 +3,9 @@
 ## How to run in local?
 
 ```bash
-./mvnw verify
-./mvnw verify -pl app
-./mvnw verify -pl acceptance-tests -am
+./mvnw clean verify
+./mvnw clean verify -pl app
+./mvnw clean verify -pl acceptance-tests -am
 ```
 
 ## MCP Servers
@@ -49,8 +49,7 @@
 
 ```bash
 npx skills add jabrena/cursor-rules-java --list
-npx skills add jabrena/cursor-rules-java --skill 173-java-agents
-npx skills add jabrena/cursor-rules-java --skill 110-java-maven-best-practices
+npx skills install jabrena/cursor-rules-java --all 
 ```
 
 ## References
