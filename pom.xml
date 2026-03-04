@@ -35,7 +35,7 @@
 		<jspecify.version>1.0.0</jspecify.version>
 		<error-prone.version>2.48.0</error-prone.version>
 		<nullaway.version>0.13.1</nullaway.version>
-		<vavr.version>0.10.6</vavr.version>
+		<vavr.version>1.0.1</vavr.version>
 		<archunit.version>1.4.1</archunit.version>
 		
 		<!-- Plugin versions -->
