@@ -41,7 +41,7 @@
 		<!-- Plugin versions -->
 		<maven-plugin-compiler.version>3.14.0</maven-plugin-compiler.version>
 		<maven-plugin-enforcer.version>3.5.0</maven-plugin-enforcer.version>
-		<extra-enforcer-rules.version>1.8.0</extra-enforcer-rules.version>
+		<extra-enforcer-rules.version>1.11.0</extra-enforcer-rules.version>
 	</properties>
 
 	<dependencyManagement>
